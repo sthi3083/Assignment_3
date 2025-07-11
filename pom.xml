@@ -54,7 +54,7 @@
                         <configuration>
                             <testFailureIgnore>true</testFailureIgnore>
                             <suiteXmlFiles>
-                                <suiteXmlFile>./src/test/${suite}.xml</suiteXmlFile>
+                                <suiteXmlFile>./src/test/regression.xml</suiteXmlFile>
                             </suiteXmlFiles>
                             <forkMode>never</forkMode>
 

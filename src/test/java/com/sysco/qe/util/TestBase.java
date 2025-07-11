@@ -2,7 +2,7 @@ package com.sysco.qe.util;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.sysco.qe.common.Constants;
-import com.sysco.qe.functions.Login;
+import com.sysco.qe.functions.Home;
 import com.sysco.qeutils.common.Constant;
 import com.syscolab.qe.core.common.LoggerUtil;
 import com.syscolab.qe.core.common.TestLayers;
@@ -12,7 +12,6 @@ import static com.sysco.qe.common.Constants.*;
 import static com.syscolab.qe.core.common.TestLayers.API;
 import static com.syscolab.qe.core.common.TestLayers.ETL;
 import static com.syscolab.qe.core.reporting.SyscoLabReporting.generateBuild;
-
 import com.syscolab.qe.core.reporting.SyscoLabQCenter;
 import com.syscolab.qe.core.reporting.SyscoLabReporting;
 import org.json.JSONException;
@@ -21,7 +20,9 @@ import org.testng.ITestResult;
 import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 @Listeners(SyscoLabListener.class)
 public class TestBase extends BaseBrowser {
@@ -29,12 +30,15 @@ public class TestBase extends BaseBrowser {
     protected SoftAssert softAssert = new SoftAssert();
     private SyscoLabListener testListeners;
     protected SyscoLabQCenter syscoLabQCenter;
+    List<String> failedOrSkippedTCsList = new ArrayList<>();
+    public static final String QCENTER_FEATURE = "feature";
+    String testID = "";
 
     @BeforeClass(alwaysRun = true)
     public void init() {
         testListeners = new SyscoLabListener();
         syscoLabQCenter = new SyscoLabQCenter();
-
+        Home.loadHomePage();
     }
 
     @BeforeSuite(alwaysRun = true)
@@ -124,7 +128,7 @@ public class TestBase extends BaseBrowser {
     // Close and quit the browser after each test
     public void cleanAfterTest(ITestContext iTestContext) {
         try {
-            Login.quitApplication();
+            Home.quitApplication();
 
         } catch (Exception e) {
             e.printStackTrace();

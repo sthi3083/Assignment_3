@@ -28,16 +28,16 @@ public class Constants {
     /*
     Email Notification Settings
     */
-    public static final boolean EMAIL_SEND = Boolean.parseBoolean(System.getProperty("send.email", "false"));
-    public static final String EMAIL_RECIPIENT = System.getProperty("email.recipient", "");
+//    public static final boolean EMAIL_SEND = Boolean.parseBoolean(System.getProperty("send.email", "false"));
+//    public static final String EMAIL_RECIPIENT = System.getProperty("email.recipient", "");
 
     /*
     Test Data Management (TDM) Settings
      */
-    public static final boolean TDM_VALIDATION = Boolean.parseBoolean(System.getProperty("tdm.validation", "false"));
-    public static final String TDM_TOKEN = "";
-    public static final String TDM_FILE = "";
-    public static final String[] TDM_CHECKING_COLUMN = {"Name"};
+//    public static final boolean TDM_VALIDATION = Boolean.parseBoolean(System.getProperty("tdm.validation", "false"));
+//    public static final String TDM_TOKEN = "";
+//    public static final String TDM_FILE = "";
+//    public static final String[] TDM_CHECKING_COLUMN = {"Name"};
 
     /*
     General Application Settings

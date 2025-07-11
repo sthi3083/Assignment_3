@@ -7,7 +7,7 @@
     </listeners>
     <test name="regression">
         <classes>
-            <class name="com.sysco.qe.tests.LoginTest"/>
+            <class name="com.sysco.qe.tests.TestHomePage"/>
         </classes>
     </test>
 </suite>
