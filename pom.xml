@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.sachini</groupId>
+    <artifactId>Assignment_03_UI_Automation_Course</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <distributionManagement>
+        <repository>
+            <id>archetype</id>
+            <name>sysco-releases</name>
+            <url>https://maven.pkg.github.com/syscocorporation/tp-sutap-archetype-project-samples</url>
+        </repository>
+    </distributionManagement>
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <suite>regression</suite>
+    </properties>
+
+    <dependencies>
+<!--        <dependency>-->
+<!--            <groupId>com.sysco.qe</groupId>-->
+<!--            <artifactId>sutap_core</artifactId>-->
+<!--            <version>3.4.0</version>-->
+<!--        </dependency>-->
+
+        <dependency>
+            <groupId>com.sysco.qe</groupId>
+            <artifactId>qe-utils</artifactId>
+            <version>1.4.21</version>
+        </dependency>
+    </dependencies>
+
+    <profiles>
+        <profile>
+            <id>regression</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <configuration>
+                            <encoding>UTF-8</encoding>
+                            <source>11</source>
+                            <target>11</target>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>3.0.0-M7</version>
+                        <configuration>
+                            <testFailureIgnore>true</testFailureIgnore>
+                            <suiteXmlFiles>
+                                <suiteXmlFile>./src/test/${suite}.xml</suiteXmlFile>
+                            </suiteXmlFiles>
+                            <forkMode>never</forkMode>
+
+                            <systemPropertyVariables>
+                                <retry.enabled>true</retry.enabled>
+                                <max.retry.count>1</max.retry.count>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--    parallel execution is enabled with 30 threads count-->
+<suite name="regression" parallel="methods" thread-count="3">
+<!--    Listeners added for retry feature-->
+    <listeners>
+        <listener class-name="com.syscolab.qe.core.reporting.SyscoLabListener"/>
+    </listeners>
+    <test name="regression">
+        <classes>
+            <class name="com.sysco.qe.tests.LoginTest"/>
+        </classes>
+    </test>
+</suite>
