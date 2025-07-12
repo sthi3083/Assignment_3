@@ -34,7 +34,7 @@ public class HomePage{
     public void declineCookie() {
         syscoLabUI.clickOnVisibleElement(declineBtn);
         declineBtnClicked = true;
-        syscoLabUI.sleep(5);
+        //syscoLabUI.sleep(5);
     }
 
     //verify cookies handling
@@ -47,7 +47,8 @@ public class HomePage{
         //syscoLabUI.switchToDefaultFrame();
         syscoLabUI.clickOnVisibleElement(cartIcon);
         cartClicked = true;
-        syscoLabUI.sleep(3);
+        System.out.println(">>>>>>>>>>navigated to the cart!");
+        //syscoLabUI.sleep(3);
     }
 
     //verify navigation to the cart
@@ -64,6 +65,6 @@ public class HomePage{
     //sleep
     public void sleep() {
         //SyscoLabUI ui = HomePage.getDriver();
-        syscoLabUI.sleep(10);
+        syscoLabUI.sleep(4);
     }
 }

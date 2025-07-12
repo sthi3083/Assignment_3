@@ -10,7 +10,7 @@ public class CartPage {
     //public static By cartemptyText = LocatorReader.by("cart.cartemptyText");
     //public static By cartemptyText = By.xpath("//p[@class='cart-empty__text']");
     public static By cartemptyText = By.xpath(PropertiesRead.get("cart.cartemptyText"));
-    public static By cartClearOption = By.xpath(PropertiesRead.get("cart.cartClearOption"));
+    //public static By cartClearOption = By.xpath(PropertiesRead.get("cart.cartClearOption"));
 
 
 //    public static void CheckEmptyCart(){
@@ -32,6 +32,11 @@ public class CartPage {
         } catch (NoSuchElementException e){
             return false;
         }
+    }
+
+    public static void goToThePreviousPage(){
+        SyscoLabUI syscoLabUI = HomePage.getDriver();
+        syscoLabUI.navigateBack();
     }
 
 

@@ -14,4 +14,9 @@ public class Cart {
     public static boolean isCartEmpty(){
         return cartPage.isCartEmpty();
     }
+
+    public static void goToThePreviousPage(){
+        CartPage.goToThePreviousPage();
+        homePage.sleep();
+    }
 }

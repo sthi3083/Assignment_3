@@ -124,3 +124,98 @@ QMetry TC ID02 - Navigate to the Cart
 QMetry TC ID02 - Navigate to the Cart
 QMetry TC ID01 - Open Home Page and Handle Cookies
 QMetry TC ID01 - Open Home Page and Handle Cookies
+QMetry TC ID01 - Open Home Page and Handle Cookies
+QMetry TC ID01 - Open Home Page and Handle Cookies
+QMetry TC ID02 - Navigate to Cart
+QMetry TC ID02 - Navigate to Cart
+QMetry TC ID01 - Open Home Page and Handle Cookies
+QMetry TC ID02 - Navigate to Cart
+QMetry TC ID01 - Open Home Page and Handle Cookies
+QMetry TC ID02 - Navigate to Cart
+QMetry TC ID03 - Check Cart
+QMetry TC ID03 - Check Cart
+QMetry TC ID03 - Check Cart
+QMetry TC ID01 - Open Home Page and Handle Cookies
+QMetry TC ID01 - Open Home Page and Handle Cookies
+QMetry TC ID02 - Navigate to the Cart
+QMetry TC ID02 - Navigate to the Cart
+QMetry TC ID03 - Check Cart
+QMetry TC ID01 - Open Home Page and Handle Cookies
+QMetry TC ID02 - Navigate to the Cart
+QMetry TC ID01 - Open Home Page and Handle Cookies
+QMetry TC ID02 - Navigate to the Cart Page
+QMetry TC ID01 - Open Home Page and Handle Cookies
+QMetry TC ID02 - Navigate to the Cart Page
+QMetry TC ID01 - Navigate to the Cart
+QMetry TC ID01 - Navigate to the Cart
+QMetry TC ID01 - Navigate to the Cart
+QMetry TCID03 - Browse Product from Home Page Categories
+QMetry TCID02 - Check Cart
+QMetry TCID01 - Navigate to the Cart
+QMetry TCID03 - Browse Product from Home Page Categories
+QMetry TCID02 - Check Cart
+QMetry TCID02 - Check Cart
+QMetry TCID01 - Navigate to the Cart
+QMetry TCID01 - Navigate to the Cart
+QMetry TCID01 - Navigate to the Cart
+QMetry TCID02 - Check Cart
+QMetry TCID03 - Browse Product from Home Page Categories
+QMetry TCID01 - Navigate to the Cart From the HomePage
+QMetry TCID02 - Check Cart
+QMetry TCID03 - Browse Product from Home Page Categories
+QMetry TCID01 - Navigate to the Cart From the HomePage
+QMetry TCID02 - Check Cart
+QMetry TCID03 - Browse Product from Home Page Categories
+QMetry TCID04 - Click On A Random Product
+QMetry TCID04 - Click On A Random Product
+QMetry TCID01 - Navigate to the Cart From the HomePage
+QMetry TCID02 - Check Cart
+QMetry TCID03 - Browse Product from Home Page Categories
+QMetry TCID04 - Click On A Random Product
+QMetry TCID01 - Navigate to the Cart From the HomePage
+QMetry TCID02 - Check Cart
+QMetry TCID03 - Browse Product from Home Page Categories
+QMetry TCID04 - Click On A Random Product
+QMetry TCID01 - Navigate to the Cart From the HomePage
+QMetry TCID02 - Check Cart
+QMetry TCID03 - Browse Product from Home Page Categories
+QMetry TCID01 - Navigate to the Cart From the HomePage
+QMetry TCID02 - Check Cart
+QMetry TCID03 - Browse Product from Home Page Categories
+QMetry TCID04 - Click On A Random Product
+QMetry TCID01 - Navigate to the Cart From the HomePage
+QMetry TCID02 - Check Cart
+QMetry TCID03 - Browse Product from Home Page Categories
+QMetry TCID04 - Click On A Random Product
+QMetry TCID01 - Navigate to the Cart From the HomePage
+QMetry TCID02 - Check Cart
+QMetry TCID03 - Browse Product from Home Page Categories
+QMetry TCID04 - Click On A Random Product
+QMetry TCID01 - Navigate to the Cart From the HomePage
+QMetry TCID02 - Check Cart
+QMetry TCID03 - Browse Product from Home Page Categories
+QMetry TCID04 - Click On A Random Product
+QMetry TCID01 - Navigate to the Cart From the HomePage
+QMetry TCID02 - Check Cart
+QMetry TCID03 - Browse Product from Home Page Categories
+QMetry TCID04 - Click On A Random Product
+QMetry TCID01 - Navigate to the Cart From the HomePage
+QMetry TCID02 - Check Cart
+QMetry TCID03 - Browse Product from Home Page Categories
+QMetry TCID04 - Click On A Random Product
+QMetry TCID01 - Navigate to the Cart From the HomePage
+QMetry TCID02 - Check Cart
+QMetry TCID03 - Browse Product from Home Page Categories
+QMetry TCID04 - Click On A Random Product
+QMetry TCID01 - Navigate to the Cart From the HomePage
+QMetry TCID02 - Check Cart
+QMetry TCID03 - Browse Product from Home Page Categories
+QMetry TCID04 - Click On A Random Product
+QMetry TCID01 - Navigate to the Cart From the HomePage
+QMetry TCID02 - Check Cart
+QMetry TCID03 - Browse Product from Home Page Categories
+QMetry TCID04 - Click On A Random Product
+QMetry TCID01 - Navigate to the Cart From the HomePage
+QMetry TCID02 - Check Cart
+QMetry TCID03 - Browse Product from Home Page Categories
+QMetry TCID04 - Click On A Random Product

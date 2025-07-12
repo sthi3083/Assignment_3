@@ -35,7 +35,7 @@ public class TestBase extends BaseBrowser {
     public static final String QCENTER_FEATURE = "feature";
     String testID = "";
 
-    @BeforeClass(alwaysRun = true)
+    @BeforeSuite(alwaysRun = true)
     public void init() {
         testListeners = new SyscoLabListener();
         syscoLabQCenter = new SyscoLabQCenter();
