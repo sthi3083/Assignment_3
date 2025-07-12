@@ -6,22 +6,9 @@ import org.openqa.selenium.NoSuchElementException;
 
 public class CartPage {
 
-    //element locators
-    //public static By cartemptyText = LocatorReader.by("cart.cartemptyText");
-    //public static By cartemptyText = By.xpath("//p[@class='cart-empty__text']");
     public static By cartemptyText = By.xpath(PropertiesRead.get("cart.cartemptyText"));
-    //public static By cartClearOption = By.xpath(PropertiesRead.get("cart.cartClearOption"));
-
-
-//    public static void CheckEmptyCart(){
-//        SyscoLabUI syscoLabUI = HomePage.getDriver();
-//        String textEmptyCart = syscoLabUI.getText(cartemptyText);
-//        if(textEmptyCart.contains("You haven't added anything to this basket.")){
-//            System.out.println(">>>>>>>>> TC ID 2 DONE!  CART IS EMPTY!");
-//        }else{
-//            System.out.println(">>>>>>>>ERROR!!");
-//        }
-//    }
+    public static By cartClearOption = By.xpath(PropertiesRead.get("cart.cartClearOption"));
+    public boolean cartcleared = false;
 
     public boolean isCartEmpty(){
         SyscoLabUI syscoLabUI = HomePage.getDriver();
@@ -34,10 +21,26 @@ public class CartPage {
         }
     }
 
-    public static void goToThePreviousPage(){
+    public boolean isCartClearOptionVisible(){
+        SyscoLabUI syscoLabUI = HomePage.getDriver();
+        return syscoLabUI.findVisibleElement(cartClearOption) != null;
+    }
+
+    public void clearCartItems(){
+        SyscoLabUI syscoLabUI = HomePage.getDriver();
+        syscoLabUI.clickOnVisibleElement(cartClearOption);
+        cartcleared = true;
+    }
+
+    public boolean isCartClearClicked(){
+        return cartcleared;
+    }
+
+    public void goToThePreviousPage(){
         SyscoLabUI syscoLabUI = HomePage.getDriver();
         syscoLabUI.navigateBack();
     }
+
 
 
 }

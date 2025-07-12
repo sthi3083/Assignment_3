@@ -25,9 +25,20 @@ public class TestHomePage extends TestBase {
         softAssert.assertAll();
     }
 
+//    @Test(priority = 2, description = "QMetry TCID02 - Check Cart", dependsOnMethods = "homepage")
+//    public void checkCart(){
+//        softAssert.assertTrue(Cart.isCartEmpty(), "Cart is not Empty!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+//        softAssert.assertAll();
+//    }
+
     @Test(priority = 2, description = "QMetry TCID02 - Check Cart", dependsOnMethods = "homepage")
     public void checkCart(){
-        softAssert.assertTrue(Cart.isCartEmpty(), "Cart is not Empty!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        if(Cart.isCartClearOptionVisible()){
+            Cart.clearCartItems();
+            softAssert.assertTrue(Cart.isCartClearClicked(), "!! CART CLEAR OPTION ERROR !!");
+        } else {
+            softAssert.assertTrue(Cart.isCartEmpty(), "!! CART IS NOT EMPTY. SOMETHING WENT WRONG !!");
+        }
         softAssert.assertAll();
     }
 

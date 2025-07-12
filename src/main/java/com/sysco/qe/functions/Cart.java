@@ -16,7 +16,20 @@ public class Cart {
     }
 
     public static void goToThePreviousPage(){
-        CartPage.goToThePreviousPage();
+        cartPage.goToThePreviousPage();
         homePage.sleep();
+    }
+
+    public static boolean isCartClearOptionVisible(){
+        return cartPage.isCartClearOptionVisible();
+    }
+
+    public static void clearCartItems(){
+        cartPage.clearCartItems();
+        homePage.sleep();
+    }
+
+    public static boolean isCartClearClicked(){
+        return cartPage.isCartClearClicked();
     }
 }
