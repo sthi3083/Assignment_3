@@ -14,6 +14,7 @@ import static com.syscolab.qe.core.common.TestLayers.ETL;
 import static com.syscolab.qe.core.reporting.SyscoLabReporting.generateBuild;
 import com.syscolab.qe.core.reporting.SyscoLabQCenter;
 import com.syscolab.qe.core.reporting.SyscoLabReporting;
+import com.syscolab.qe.core.ui.SyscoLabUI;
 import org.json.JSONException;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
@@ -38,8 +39,10 @@ public class TestBase extends BaseBrowser {
     public void init() {
         testListeners = new SyscoLabListener();
         syscoLabQCenter = new SyscoLabQCenter();
+
         Home.loadHomePage();
     }
+
 
     @BeforeSuite(alwaysRun = true)
     public void configureReporting() {
@@ -124,7 +127,7 @@ public class TestBase extends BaseBrowser {
 
     }
 
-    @AfterClass(alwaysRun = true)
+    @AfterClass
     // Close and quit the browser after each test
     public void cleanAfterTest(ITestContext iTestContext) {
         try {
@@ -134,6 +137,19 @@ public class TestBase extends BaseBrowser {
             e.printStackTrace();
         }
     }
+
+//    @AfterSuite(alwaysRun = true)
+//    // Close and quit the browser after each test
+//    public void cleanAfterTest() {
+//        try {
+//            Home.quitApplication();
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
+
+
 
 
 

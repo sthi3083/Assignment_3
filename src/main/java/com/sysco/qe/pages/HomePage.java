@@ -1,14 +1,20 @@
 package com.sysco.qe.pages;
 import com.sysco.qe.common.Constants;
+import com.sysco.qe.utils.PropertiesRead;
 import com.syscolab.qe.core.ui.SyscoLabUI;
 import com.syscolab.qe.core.ui.web.SyscoLabWUI;
 import org.openqa.selenium.By;
 
-public class HomePage {
+public class HomePage{
 
-    static SyscoLabUI syscoLabUI;
-    public static By declineBtn = By.xpath("//button[@id='onetrust-reject-all-handler']");
-    public static By cartIcon = By.xpath("//a[@href='/cart']");
+    public static SyscoLabUI syscoLabUI;
+
+    //element locators
+    public static By declineBtn = By.xpath(PropertiesRead.get("home.declineBtn"));
+    public static By cartIcon = By.xpath(PropertiesRead.get("home.cartIcon"));
+
+    //public static By declineBtn = By.xpath("//button[@id='onetrust-reject-all-handler']");
+    //public static By cartIcon = By.xpath("//a[@href='/cart']");
     private boolean declineBtnClicked = false;
     public boolean cartClicked = false;
 
@@ -18,6 +24,10 @@ public class HomePage {
         syscoLabUI.maximizeWindow();
         syscoLabUI.navigateTo(Constants.APP_URL);
         syscoLabUI.setTimeOut(45);
+    }
+
+    public static SyscoLabUI getDriver(){
+        return syscoLabUI;
     }
 
     //handle cookies
@@ -53,6 +63,7 @@ public class HomePage {
 
     //sleep
     public void sleep() {
+        //SyscoLabUI ui = HomePage.getDriver();
         syscoLabUI.sleep(10);
     }
 }
