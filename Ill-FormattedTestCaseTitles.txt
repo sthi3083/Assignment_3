@@ -219,3 +219,46 @@ QMetry TCID01 - Navigate to the Cart From the HomePage
 QMetry TCID02 - Check Cart
 QMetry TCID03 - Browse Product from Home Page Categories
 QMetry TCID04 - Click On A Random Product
+QMetry TCID01 - Navigate to the Cart From the HomePage
+QMetry TCID02 - Check Cart
+QMetry TCID03 - Browse Product from Home Page Categories
+QMetry TCID04 - Click On A Random Product
+QMetry TCID01 - Navigate to the Cart From the HomePage
+QMetry TCID02 - Check Cart
+QMetry TCID03 - Browse Product from Home Page Categories
+QMetry TCID04 - Click On A Random Product
+QMetry TCID01 - Navigate to the Cart From the HomePage
+QMetry TCID02 - Check Cart
+QMetry TCID03 - Browse Product from Home Page Categories
+QMetry TCID04 - Click On A Random Product and Save Details
+QMetry TCID05 - Add Selected Product to the Cart
+QMetry TCID01 - Navigate to the Cart From the HomePage
+QMetry TCID02 - Check Cart
+QMetry TCID03 - Browse Product from Home Page Categories
+QMetry TCID04 - Click On A Random Product and Save Details
+QMetry TCID05 - Add Selected Product to the Cart
+QMetry TCID01 - Navigate to the Cart From the HomePage
+QMetry TCID02 - Check Cart
+QMetry TCID03 - Browse Product from Home Page Categories
+QMetry TCID04 - Click On A Random Product and Save Details
+QMetry TCID05 - Add Selected Product to the Cart
+QMetry TCID01 - Navigate to the Cart From the HomePage
+QMetry TCID02 - Check Cart
+QMetry TCID03 - Browse Product from Home Page Categories
+QMetry TCID04 - Click On A Random Product and Save Details
+QMetry TCID05 - Add Selected Product to the Cart
+QMetry TCID01 - Navigate to the Cart From the HomePage
+QMetry TCID02 - Check Cart
+QMetry TCID03 - Browse Product from Home Page Categories
+QMetry TCID04 - Click On A Random Product and Save Details
+QMetry TCID05 - Add Selected Product to the Cart
+QMetry TCID01 - Navigate to the Cart From the HomePage
+QMetry TCID02 - Check Cart
+QMetry TCID03 - Browse Product from Home Page Categories
+QMetry TCID04 - Click On A Random Product and Save Details
+QMetry TCID05 - Add Selected Product to the Cart
+QMetry TCID01 - Navigate to the Cart From the HomePage
+QMetry TCID02 - Check Cart
+QMetry TCID03 - Browse Product from Home Page Categories
+QMetry TCID04 - Click On A Random Product and Save Details
+QMetry TCID05 - Add Selected Product to the Cart

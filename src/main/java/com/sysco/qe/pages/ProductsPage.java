@@ -1,14 +1,9 @@
 package com.sysco.qe.pages;
 
-import com.amazonaws.services.dynamodbv2.xspec.B;
 import com.sysco.qe.utils.PropertiesRead;
 import com.syscolab.qe.core.ui.SyscoLabUI;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
