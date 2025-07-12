@@ -8,6 +8,13 @@ public class CartPage {
 
     public static By cartemptyText = By.xpath(PropertiesRead.get("cart.cartemptyText"));
     public static By cartClearOption = By.xpath(PropertiesRead.get("cart.cartClearOption"));
+    public static By qtyTxtField = By.xpath(PropertiesRead.get("cart.qtyTxtField"));
+    public static By addmoreBtn = By.xpath(PropertiesRead.get("cart.addmoreBtn"));
+    public static By trashcan = By.xpath(PropertiesRead.get("cart.trashcan"));
+    public static By deleteconfirm = By.xpath(PropertiesRead.get("cart.deleteconfirm"));
+
+    public static By code = By.xpath(PropertiesRead.get("cart.code"));
+
     public boolean cartcleared = false;
 
     public boolean isCartEmpty(){
@@ -40,6 +47,29 @@ public class CartPage {
         SyscoLabUI syscoLabUI = HomePage.getDriver();
         syscoLabUI.navigateBack();
     }
+
+    public String getCartItemCode(){
+        SyscoLabUI syscoLabUI = HomePage.getDriver();
+        return syscoLabUI.findElement(code).getAttribute("data-code");
+    }
+
+    public int getCartItemQty(){
+        SyscoLabUI syscoLabUI = HomePage.getDriver();
+        String val = syscoLabUI.findElement(qtyTxtField).getAttribute("value");
+        return Integer.parseInt(val);
+    }
+
+    public void updateCartQty(){
+        SyscoLabUI syscoLabUI = HomePage.getDriver();
+        syscoLabUI.clickOnVisibleElement(addmoreBtn);
+    }
+
+    public void deleteProductFromCart(){
+        SyscoLabUI syscoLabUI = HomePage.getDriver();
+        syscoLabUI.findElement(trashcan).click();
+        syscoLabUI.findElement(deleteconfirm).click();
+    }
+
 
 
 

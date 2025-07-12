@@ -14,26 +14,34 @@ public class SelectedProduct {
 
     public static void saveProductDetails(){
         selectedProductPage.saveProductDetails();
-        homePage.sleep();
+
     }
 
     public static void printSavedDetails(){
         selectedProductPage.printSavedDetails();
-        homePage.sleep();
+
     }
 
     public static void setQty(int qty){
         selectedProductPage.setQty(qty);
-        homePage.sleep();
+
     }
 
     public static void clickAddBtn(){
         selectedProductPage.clickAddBtn();
-        homePage.sleep();
+
     }
 
     public static boolean isAddBtnClicked(){
         return selectedProductPage.isAddBtnClicked();
+    }
+
+    public static String getSavedCode(){
+        return selectedProductPage.getSavedCode();
+    }
+
+    public static String getSavedName(){
+        return selectedProductPage.getSavedName();
     }
 
 }

@@ -5,6 +5,7 @@ import com.sysco.qe.functions.Home;
 import com.sysco.qe.functions.Products;
 import com.sysco.qe.functions.SelectedProduct;
 import com.sysco.qe.util.TestBase;
+import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
@@ -77,10 +78,46 @@ public class TestHomePage extends TestBase {
         softAssert.assertAll();
     }
 
+    @Test(priority = 6, description = "QMetry TCID06 - Check Cart For Added Product Details And Verify", dependsOnMethods = "addProdToCart")
+    public void CheckCartDetails(){
+        String expectedItemCode = SelectedProduct.getSavedCode();
+        int expectedQty = 3;
 
+        String actualItemCodeInCart = Cart.getCartItemCode();
+        int actualQtyInCart = Cart.getCartItemQty();
 
+        softAssert.assertEquals(actualItemCodeInCart, expectedItemCode, "!! CART ITEM CODE IS NOT MATCHING FOR THE ITEM ADDED !!");
+        softAssert.assertEquals(actualQtyInCart,expectedQty, "!! CART QTY SHOULD BE SAME AS ADDED QTY. SOMETHING WENT WRONG !!" );
+        softAssert.assertAll();
 
+        //log what we have in cart now
+        System.out.println("--------------------------------------------------");
+        System.out.println("---------------------CART DETAILS-----------------");
+        System.out.println("--------------------------------------------------");
+        System.out.println(">> CART ITEM: "+ actualItemCodeInCart);
+        System.out.println(">> CART ITEM QTY: "+ actualQtyInCart);
+        System.out.println("--------------------------------------------------");
+    }
 
+    @Test(priority = 7, description = "QMetry TCID07 - Update Cart and Verify", dependsOnMethods = "CheckCartDetails")
+    public void updCartProduct(){
+
+        Cart.updateCartQty();
+        int expectedUpdateQty = 4;
+        int actualUpdQty = Cart.getCartItemQty();
+        softAssert.assertEquals(actualUpdQty,expectedUpdateQty, "!! CART QTY SHOULD BE 4. SOMETHING WENT WRONG !!" );
+        softAssert.assertAll();
+    }
+
+    @Test(priority = 8, description = "QMetry TCID08 - Delete Product From Cart and Verify", dependsOnMethods = "updCartProduct")
+    public void dltProdFromCart(){
+        Cart.deleteProductFromCart();
+        if(Cart.isCartEmpty()){
+            System.out.println(" << Cart is empty now >>");
+        } else {
+            System.out.println(" !! CART IS NOT EMPTY YET. SOMETHING WENT WRONG !!");
+        }
+    }
 
 
 
