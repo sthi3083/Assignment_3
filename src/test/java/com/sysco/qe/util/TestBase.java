@@ -73,7 +73,7 @@ public class TestBase extends BaseBrowser {
         System.setProperty("test.env", String.valueOf(Constant.TEST_ENV));
         System.setProperty("test.release", String.valueOf(Constants.TEST_RELEASE));
         System.setProperty("build.completion", String.valueOf(Constants.QLYTICS_BUILD_COMPLETION));
-//        System.setProperty("test.suite", TEST_SUITE);
+
     }
 
     @AfterMethod(alwaysRun = true)
@@ -137,20 +137,5 @@ public class TestBase extends BaseBrowser {
             e.printStackTrace();
         }
     }
-
-//    @AfterSuite(alwaysRun = true)
-//    // Close and quit the browser after each test
-//    public void cleanAfterTest() {
-//        try {
-//            Home.quitApplication();
-//
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
-
-
-
-
 
 }

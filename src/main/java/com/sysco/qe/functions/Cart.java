@@ -40,5 +40,15 @@ public class Cart {
 
     public static void deleteProductFromCart(){
         cartPage.deleteProductFromCart();
+        homePage.sleep();
+    }
+
+    public static void addProdCodeQADD(String codeQAdd, int qtyQAdd) throws InterruptedException{
+        cartPage.addProdCodeQADD(codeQAdd, qtyQAdd);
+    }
+
+    public static void addProdQADDBtn(){
+        cartPage.addProdQADDBtn();
+        homePage.sleep();
     }
 }

@@ -4,8 +4,6 @@ import com.sysco.qe.pages.HomePage;
 import com.sysco.qe.pages.SelectedProductPage;
 
 public class SelectedProduct {
-
-    static HomePage homePage = new HomePage();
     static SelectedProductPage selectedProductPage = new SelectedProductPage();
 
     public static boolean isAddBtnVisible(){
