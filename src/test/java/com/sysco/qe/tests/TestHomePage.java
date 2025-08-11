@@ -5,19 +5,31 @@ import com.sysco.qe.functions.Home;
 import com.sysco.qe.functions.Products;
 import com.sysco.qe.functions.SelectedProduct;
 import com.sysco.qe.util.TestBase;
+import com.sysco.qe.util.TestFeatures;
+import com.sysco.qe.util.TestModules;
+import com.syscolab.qe.core.common.TestLayers;
+import com.syscolab.qe.core.reporting.SyscoLabListener;
+import com.syscolab.qe.core.reporting.SyscoLabReporting;
 import org.testng.ITestContext;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
+
+import static com.syscolab.qe.core.common.Constants.TEST_LAYER;
+
 
 public class TestHomePage extends TestBase {
 
     //init
-    @BeforeSuite(alwaysRun = true)
+    @BeforeClass()
     public void init(ITestContext iTestContext) {
-        iTestContext.setAttribute(QCENTER_FEATURE, "Regression_Day3 - PDPTest");
+        iTestContext.setAttribute("feature", TestModules.mod+" - "+TestFeatures.feature);
+        SyscoLabReporting.featureThreadLocal.set(iTestContext.getAttribute("feature").toString());
+        iTestContext.setAttribute(TEST_LAYER, TestLayers.UI);
     }
 
-    @Test(priority = 1, description = "QMetry TCID01 - Navigate to the Cart From the HomePage")
+    @Test(priority = 1, description = "QMetry TCID01 - Navigate to the Cart From the HomePage", alwaysRun = true)
     public void homepage(){
         System.out.println("-----------------------------------------------------------------------------------");
         System.out.println(" << STARTING TC 01 >>");
@@ -29,7 +41,7 @@ public class TestHomePage extends TestBase {
         System.out.println("-----------------------------------------------------------------------------------");
     }
 
-    @Test(priority = 2, description = "QMetry TCID02 - Check Cart", dependsOnMethods = "homepage")
+    @Test(priority = 2, description = "QMetry TCID02 - Check Cart", dependsOnMethods = "homepage", alwaysRun = true)
     public void checkCart(){
         System.out.println("-----------------------------------------------------------------------------------");
         System.out.println(" << STARTING TC 02 >>");
@@ -43,7 +55,7 @@ public class TestHomePage extends TestBase {
         System.out.println("-----------------------------------------------------------------------------------");
     }
 
-    @Test(priority = 3, description = "QMetry TCID03 - Browse Product from Home Page Categories", dependsOnMethods = "checkCart")
+    @Test(priority = 3, description = "QMetry TCID03 - Browse Product from Home Page Categories", dependsOnMethods = "checkCart", alwaysRun = true)
     public void browseProducts(){
         System.out.println("-----------------------------------------------------------------------------------");
         System.out.println(" << STARTING TC 03 >>");
@@ -54,7 +66,7 @@ public class TestHomePage extends TestBase {
         System.out.println("-----------------------------------------------------------------------------------");
     }
 
-    @Test(priority = 4, description = "QMetry TCID04 - Click On A Random Product and Save Details", dependsOnMethods = "browseProducts")
+    @Test(priority = 4, description = "QMetry TCID04 - Click On A Random Product and Save Details", dependsOnMethods = "browseProducts", alwaysRun = true)
     public void clickRandomProduct(){
         System.out.println("-----------------------------------------------------------------------------------");
         System.out.println(" << STARTING TC 04 >>");
@@ -73,7 +85,7 @@ public class TestHomePage extends TestBase {
         System.out.println("-----------------------------------------------------------------------------------");
     }
 
-    @Test(priority = 5, description = "QMetry TCID05 - Add Selected Product to the Cart", dependsOnMethods = "clickRandomProduct")
+    @Test(priority = 5, description = "QMetry TCID05 - Add Selected Product to the Cart", dependsOnMethods = "clickRandomProduct", alwaysRun = true)
     public void addProdToCart(){
         System.out.println("-----------------------------------------------------------------------------------");
         System.out.println(" << STARTING TC 05 >>");
@@ -86,7 +98,7 @@ public class TestHomePage extends TestBase {
         System.out.println("-----------------------------------------------------------------------------------");
     }
 
-    @Test(priority = 6, description = "QMetry TCID06 - Check Cart For Added Product Details And Verify", dependsOnMethods = "addProdToCart")
+    @Test(priority = 6, description = "QMetry TCID06 - Check Cart For Added Product Details And Verify", dependsOnMethods = "addProdToCart", alwaysRun = true)
     public void CheckCartDetails(){
         System.out.println("-----------------------------------------------------------------------------------");
         System.out.println(" << STARTING TC 06 >>");
@@ -110,7 +122,7 @@ public class TestHomePage extends TestBase {
         System.out.println("-----------------------------------------------------------------------------------");
     }
 
-    @Test(priority = 7, description = "QMetry TCID07 - Update Cart and Verify", dependsOnMethods = "CheckCartDetails")
+    @Test(priority = 7, description = "QMetry TCID07 - Update Cart and Verify", dependsOnMethods = "CheckCartDetails", alwaysRun = true)
     public void updCartProduct(){
         System.out.println("-----------------------------------------------------------------------------------");
         System.out.println(" << STARTING TC 07 >>");
@@ -122,7 +134,7 @@ public class TestHomePage extends TestBase {
         System.out.println("-----------------------------------------------------------------------------------");
     }
 
-    @Test(priority = 8, description = "QMetry TCID08 - Delete Product From Cart and Verify", dependsOnMethods = "updCartProduct")
+    @Test(priority = 8, description = "QMetry TCID08 - Delete Product From Cart and Verify", dependsOnMethods = "updCartProduct", alwaysRun = true)
     public void dltProdFromCart(){
         System.out.println("-----------------------------------------------------------------------------------");
         System.out.println(" << STARTING TC 08 >>");
@@ -135,7 +147,7 @@ public class TestHomePage extends TestBase {
         System.out.println("-----------------------------------------------------------------------------------");
     }
 
-    @Test(priority = 9, description = "QMetry TCID09 - Add Product Using Quick Add Option From Cart and Verify", dependsOnMethods = "dltProdFromCart")
+    @Test(priority = 9, description = "QMetry TCID09 - Add Product Using Quick Add Option From Cart and Verify", dependsOnMethods = "dltProdFromCart", alwaysRun = true)
     public void prodQuickAddFromCart() throws InterruptedException {
         System.out.println("-----------------------------------------------------------------------------------");
         System.out.println(" << STARTING TC 09 >>");

@@ -5,31 +5,26 @@ import com.sysco.qe.common.Constants;
 import com.sysco.qe.functions.Home;
 import com.sysco.qeutils.common.Constant;
 import com.syscolab.qe.core.common.LoggerUtil;
-import com.syscolab.qe.core.common.TestLayers;
 import com.syscolab.qe.core.playwright.ui.BaseBrowser;
 import com.syscolab.qe.core.reporting.SyscoLabListener;
 import static com.sysco.qe.common.Constants.*;
-import static com.syscolab.qe.core.common.TestLayers.API;
-import static com.syscolab.qe.core.common.TestLayers.ETL;
+import static com.syscolab.qe.core.common.TestLayers.*;
 import static com.syscolab.qe.core.reporting.SyscoLabReporting.generateBuild;
 import com.syscolab.qe.core.reporting.SyscoLabQCenter;
 import com.syscolab.qe.core.reporting.SyscoLabReporting;
-import com.syscolab.qe.core.ui.SyscoLabUI;
 import org.json.JSONException;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Listeners(SyscoLabListener.class)
 public class TestBase extends BaseBrowser {
 
     protected SoftAssert softAssert = new SoftAssert();
-    private SyscoLabListener testListeners;
+    protected SyscoLabListener testListeners;
     protected SyscoLabQCenter syscoLabQCenter;
     List<String> failedOrSkippedTCsList = new ArrayList<>();
     public static final String QCENTER_FEATURE = "feature";
@@ -43,28 +38,41 @@ public class TestBase extends BaseBrowser {
         Home.loadHomePage();
     }
 
-
     @BeforeSuite(alwaysRun = true)
-    public void configureReporting() {
+    public void configQCenter() {
         if (Constants.UPDATE_DASHBOARD) {
             System.setProperty("update.dashboard", String.valueOf(Constants.UPDATE_DASHBOARD));
             System.setProperty("daily.weekly.build", String.valueOf(Constants.QLYTICS_DAILY_WEEKLY_BUILD));
-            System.setProperty("build.completion", String.valueOf(Constants.QLYTICS_BUILD_COMPLETION));
-            System.setProperty("test.layers", String.valueOf(Constants.TEST_LAYER));
             System.setProperty("test.project", String.valueOf(TEST_PROJECT));
             System.setProperty("test.env", String.valueOf(TEST_ENV));
-            System.setProperty("test.release", String.valueOf(Constants.TEST_RELEASE));
-        }
-        if (Constants.UPDATE_QMETRY) {
-            System.setProperty("update.qmetry", String.valueOf(Constants.UPDATE_QMETRY));
-            System.setProperty("qmetry.project.name", Constants.QMETRY_PROJECT_NAME);
-            System.setProperty("qmetry.test.cycle.key", Constants.QMETRY_TEST_CYCLE_KEY);
-            System.setProperty("qmetry.token", Constants.SYSCO_QMETRY_TOKEN);
-            System.setProperty("qmetry.default.cycle.name", Constants.QMETRY_DEFAULT_CYCLE_NAME);
-            System.setProperty("qmetry.dynamic.cycle", Constants.QMETRY_DYNAMIC_CYCLE);
-            System.setProperty("qmetry.custom.fields.map", Constants.QMETRY_CUSTOM_FIELD_MAP);
+            System.setProperty("test.release", String.valueOf(TEST_RELEASE));
+            System.setProperty("build.completion", String.valueOf(Constants.QLYTICS_BUILD_COMPLETION));
+            System.setProperty("test.layers", String.valueOf(Constants.TEST_LAYER));
         }
     }
+
+//    @BeforeSuite(alwaysRun = true)
+//    public void configureReporting() {
+//        if (Constants.UPDATE_DASHBOARD) {
+//            System.setProperty("update.dashboard", String.valueOf(Constants.UPDATE_DASHBOARD));
+//            System.setProperty("daily.weekly.build", String.valueOf(Constants.QLYTICS_DAILY_WEEKLY_BUILD));
+//            System.setProperty("build.completion", String.valueOf(Constants.QLYTICS_BUILD_COMPLETION));
+//            System.setProperty("test.layers", String.valueOf(Constants.TEST_LAYER));
+//            System.setProperty("test.project", String.valueOf(TEST_PROJECT));
+//            System.setProperty("test.env", String.valueOf(TEST_ENV));
+//            System.setProperty("test.release", String.valueOf(Constants.TEST_RELEASE));
+//        }
+//        if (Constants.UPDATE_QMETRY) {
+//            System.setProperty("update.qmetry", String.valueOf(Constants.UPDATE_QMETRY));
+//            System.setProperty("qmetry.project.name", Constants.QMETRY_PROJECT_NAME);
+//            System.setProperty("qmetry.test.cycle.key", Constants.QMETRY_TEST_CYCLE_KEY);
+//            System.setProperty("qmetry.token", Constants.SYSCO_QMETRY_TOKEN);
+//            System.setProperty("qmetry.default.cycle.name", Constants.QMETRY_DEFAULT_CYCLE_NAME);
+//            System.setProperty("qmetry.dynamic.cycle", Constants.QMETRY_DYNAMIC_CYCLE);
+//            System.setProperty("qmetry.custom.fields.map", Constants.QMETRY_CUSTOM_FIELD_MAP);
+//        }
+//    }
+
     @BeforeSuite(alwaysRun = true)
     public static void initializeReportData() {
         System.setProperty("update.dashboard", String.valueOf(Constants.UPDATE_DASHBOARD));
@@ -76,43 +84,10 @@ public class TestBase extends BaseBrowser {
 
     }
 
-    @AfterMethod(alwaysRun = true)
-    public void updateQCenter(ITestContext iTestContext, ITestResult testResult) {
-        try {
-            syscoLabQCenter.setProjectName(TEST_PROJECT);
-            syscoLabQCenter.setEnvironment(TEST_ENV);
-            syscoLabQCenter.setRelease(TEST_RELEASE);
-            if(iTestContext.getAttribute(TEST_LAYER).toString().equals(ETL)){
-                syscoLabQCenter.setTestLayer(ETL);}
-            else {
-                if (iTestContext.getAttribute(TEST_LAYER).toString().equals(API)) {
-                    syscoLabQCenter.setTestLayer(API);
-                }else{
-                    syscoLabQCenter.setTestLayer(TestLayers.OTHER);
-                }
-            }
-            syscoLabQCenter.setModule(iTestContext.getAttribute(QCENTER_FEATURE).toString());
-            syscoLabQCenter.setFeature(iTestContext.getAttribute(QCENTER_FEATURE).toString());
-            syscoLabQCenter.setClassName(iTestContext.getClass().getName());
-            if (UPDATE_DASHBOARD) {
-                LoggerUtil.logINFO("************** Updating Dashboard *****************");
-                JsonObject tcResult = SyscoLabReporting.getElement(testResult, null);
-
-                String status = tcResult.get("steps").getAsJsonArray().get(0).getAsJsonObject().get("result").getAsJsonObject().get("status").getAsString();
-                testID = tcResult.get("id").getAsString();
-                JsonArray array = new JsonArray();
-                if(status.equalsIgnoreCase("failed")) {
-                    failedOrSkippedTCsList.add(testID);
-                }
-                if(failedOrSkippedTCsList.contains(testID)) {
-                    tcResult.get("steps").getAsJsonArray().get(0).getAsJsonObject().get("result").getAsJsonObject().addProperty("status", "failed");
-                }
-                array.add(tcResult);
-                SyscoLabReporting.generateJsonFile(array, syscoLabQCenter);
-            }
-        } catch (Exception e) {
-            LoggerUtil.logINFO(Arrays.toString(e.getStackTrace()));
-        }
+    //newly added
+    @BeforeClass(alwaysRun = true)
+    public void initQCenter() {
+        syscoLabQCenter = new SyscoLabQCenter();
     }
 
     public void createQCenterBuild() throws JSONException {
@@ -120,12 +95,100 @@ public class TestBase extends BaseBrowser {
             generateBuild();
         }
     }
+
     @BeforeSuite
     public void runBeforeSuite() {
         initializeReportData();
         createQCenterBuild();
 
     }
+
+    @AfterMethod(alwaysRun = true)
+    public void updateDashboard(ITestContext iTestContext, ITestResult testResult) {
+        try {
+            syscoLabQCenter.setProjectName(TEST_PROJECT);
+            syscoLabQCenter.setEnvironment(TEST_ENV);
+            syscoLabQCenter.setRelease(TEST_RELEASE);
+            if (iTestContext.getAttribute(TEST_LAYER).toString().equals(ETL)) {
+                syscoLabQCenter.setTestLayer(ETL);
+            }
+            if (iTestContext.getAttribute(TEST_LAYER).toString().equals(API)) {
+                syscoLabQCenter.setTestLayer(API);
+            }
+            if (iTestContext.getAttribute(TEST_LAYER).toString().equals(DB)) {
+                syscoLabQCenter.setTestLayer(DB);
+            }
+            if (iTestContext.getAttribute(TEST_LAYER).toString().equals(UI)) {
+                syscoLabQCenter.setTestLayer(UI);
+            }
+            if (iTestContext.getAttribute(TEST_LAYER).toString().equals(OTHER)) {
+                syscoLabQCenter.setTestLayer(OTHER);
+            }
+            syscoLabQCenter.setModule(iTestContext.getAttribute("feature").toString());
+            syscoLabQCenter.setFeature(iTestContext.getAttribute("feature").toString());
+            syscoLabQCenter.setClassName(iTestContext.getClass().getName());
+            if (UPDATE_DASHBOARD) {
+                LoggerUtil.logINFO("************** Updating Dashboard *****************");
+                JsonObject tcResult = SyscoLabReporting.getElement(testResult, null);
+                String status = tcResult.get("steps").getAsJsonArray().get(0).getAsJsonObject().get("result").getAsJsonObject().get("status").getAsString();
+                testID = tcResult.get("id").getAsString();
+                JsonArray array = new JsonArray();
+                if (status.equalsIgnoreCase("failed")) {
+                    failedOrSkippedTCsList.add(testID);
+                }
+                if (failedOrSkippedTCsList.contains(testID)) {
+                    tcResult.get("steps").getAsJsonArray().get(0).getAsJsonObject().get("result").getAsJsonObject().addProperty("status", "failed");
+                }
+                array.add(tcResult);
+                SyscoLabReporting.generateJsonFile(array, syscoLabQCenter);
+            }
+        } catch (Exception e) {
+            LoggerUtil.logERROR(e.getMessage(), e);
+        }
+    }
+//    @AfterMethod(alwaysRun = true)
+//    public void updateQCenter(ITestContext iTestContext, ITestResult testResult) {
+//        try {
+//            syscoLabQCenter.setProjectName(TEST_PROJECT);
+//            syscoLabQCenter.setEnvironment(TEST_ENV);
+//            syscoLabQCenter.setRelease(TEST_RELEASE);
+//            //
+//            System.out.println("TEST LAYERRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR: "+TEST_LAYER);
+//             //
+//            if(iTestContext.getAttribute(TEST_LAYER).toString().equals(UI)){
+//                syscoLabQCenter.setTestLayer(UI);}
+//            else {
+//                if (iTestContext.getAttribute(TEST_LAYER).toString().equals(API)) { //changed API to UI
+//                    syscoLabQCenter.setTestLayer(API); //changed API to UI
+//                }else{
+//                    syscoLabQCenter.setTestLayer(TestLayers.OTHER);
+//                }
+//            }
+//            syscoLabQCenter.setModule(iTestContext.getAttribute(QCENTER_FEATURE).toString());
+//            syscoLabQCenter.setFeature(iTestContext.getAttribute(QCENTER_FEATURE).toString());
+//            syscoLabQCenter.setClassName(iTestContext.getClass().getName());
+//            if (UPDATE_DASHBOARD) {
+//                LoggerUtil.logINFO("************** Updating Dashboard *****************");
+//                JsonObject tcResult = SyscoLabReporting.getElement(testResult, null);
+//
+//                String status = tcResult.get("steps").getAsJsonArray().get(0).getAsJsonObject().get("result").getAsJsonObject().get("status").getAsString();
+//                testID = tcResult.get("id").getAsString();
+//                JsonArray array = new JsonArray();
+//                if(status.equalsIgnoreCase("failed")) {
+//                    failedOrSkippedTCsList.add(testID);
+//                }
+//                if(failedOrSkippedTCsList.contains(testID)) {
+//                    tcResult.get("steps").getAsJsonArray().get(0).getAsJsonObject().get("result").getAsJsonObject().addProperty("status", "failed");
+//                }
+//                array.add(tcResult);
+//                SyscoLabReporting.generateJsonFile(array, syscoLabQCenter);
+//            }
+//        } catch (Exception e) {
+//            LoggerUtil.logINFO(Arrays.toString(e.getStackTrace()));
+//        }
+//    }
+
+
 
     @AfterClass
     // Close and quit the browser after each test
